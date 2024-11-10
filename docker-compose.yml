@@ -1,0 +1,26 @@
+services:
+  todo: 
+    build: ./todo_service
+    image: vsen910/todo-service-todo-app
+    env_file:
+      - ./todo_service/.env
+    ports:
+      - 8081:8081
+  user:
+    build: ./user_service
+    image: vsen910/user-service-todo-app
+    env_file:
+      - ./user_service/.env
+    ports:
+      - 8082:8082
+  gateway: 
+    build: ./gateway
+    image: vsen910/gateway-todo-app
+    depends_on:
+      - todo
+      - user
+    env_file:
+      - ./gateway/.env
+    ports:
+      - 8080:8080
+  
