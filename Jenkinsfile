@@ -61,7 +61,10 @@ pipeline {
             steps {
                 sh '''
                 docker compose build
-                docker compose push
+                
+                docker push vsen910/todo-service-todo-app
+                docker push vsen910/user-service-todo-app
+                docker push vsen910/gateway-todo-app
                 '''
             }
         }
